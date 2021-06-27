@@ -1,0 +1,62 @@
+{% extends "main.html" %}
+
+{% block title %}
+      Edificios
+{% endblock %}
+
+{% block content %}
+      <h1>Listado de edificios y su información</h1>
+      <a href="{% url 'crear_edificio' %}">Añadir un nuevo edificio</a>
+      <br>
+      <a href="{% url 'crear_departamento'%}">Añadir un nuevo departamento</a>
+      <hr>
+      <table id="tabla_datos">
+            <thead>
+            <tr>
+                  <th>Nombre</th>
+                  <th>Dirreción</th>
+                  <th>Ciudad</th>
+                  <th>Tipo</th>
+                  <th></th>
+                  <th>Departamentos</th>
+                  <th></th>
+                  <th>Costo final</th>
+                  <th>Total de cuartos</th>
+            </tr>
+            </thead>
+            {% for x in edificios %}
+            <tr>
+                  <td>{{x.nombre}}</td>
+                  <td>{{x.dirreccion}}</td>
+                  <td>{{x.ciudad}}</td>
+                  <td>{{x.tipo}}</td>
+                  <td>
+                        <a href="{% url 'editar_edificio' x.id%}">Editar</a> <br> 
+                        <a href="{% url 'eliminar_edificio' x.id%}" onclick="return confirm('¿Está seguro de eliminar este edificio?')">Eliminar</a>
+                  </td>
+                  <td>
+                        {% for z in x.departamentos.all %} 
+                              {{z.nombre_propietario}} - {{z.costo}} - {{z.cantidad_cuartos}}
+                              <br>
+                        {% endfor %}
+                        <br>
+                  </td>
+                  <td>
+                        {% for z in x.departamentos.all %} 
+                              [<a href="{% url 'editar_departamento' z.id%}">Editar</a>] 
+                              [<a href="{% url 'eliminar_departamento' z.id%}" onclick="return confirm('¿Está seguro de eliminar este departamento?')">Eliminar</a>]
+                              <br>
+                        {% endfor %}
+                        [<a href="{% url 'crear_departamento_edificio' x.id%}">+Nuevo</a>] 
+                  </td>
+                  <td>{{ x.obtener_costo_departamentos }}</td>
+                  <td>{{ x.obtener_cuartos_departamentos }}</td> 
+            </tr>
+            {% endfor %}
+      </table>
+      <script type="text/javascript">
+            $(document).ready( function () {
+              $('#tabla_datos').DataTable();
+            });
+      </script>
+{% endblock %}

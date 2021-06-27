@@ -1,0 +1,33 @@
+{% extends "main.html" %}
+
+{% block title %}
+      {{titulo}}
+{% endblock %}
+{% block content %}
+<h2>{{titulo}}</h2>
+<form action="" method="post">
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+      <div class="contenidoForm">
+            {{ form.nombre.errors }}
+            <label for="{{ form.nombre.id_for_label }}">Nombre del edificio:</label>
+            {{ form.nombre }}
+      </div>
+      <div class="contenidoForm">
+            {{ form.dirreccion.errors }}
+            <label for="{{ form.dirreccion.id_for_label }}">Dirreccion del edificio:</label>
+            {{ form.dirreccion }}
+      </div>
+      <div class="contenidoForm">
+            {{ form.ciudad.errors }}
+            <label for="{{ form.ciudad.id_for_label }}">Ciudad:</label>
+            {{ form.ciudad }}
+      </div>
+      <div class="contenidoForm">
+            {{ form.tipo.errors }}
+            <label for="{{ form.tipo.id_for_label }}">Tipo de edificio:</label>
+            {{ form.tipo }}
+      </div>
+      <button type='submit'>Confirmar</button>
+</form>
+{% endblock %}

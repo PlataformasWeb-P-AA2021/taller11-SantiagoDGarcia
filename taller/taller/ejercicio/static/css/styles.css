@@ -1,0 +1,64 @@
+body {
+      margin: 0;
+}
+nav, footer{
+      display:inline-block;
+      text-align: right;
+      background-color: crimson;
+      width: 97%;
+      margin: 0;
+      padding: 1em;
+      vertical-align: top;
+}
+nav a, footer p {
+      text-decoration: none;
+      color: white;
+      padding-left: 1em;
+}
+nav p{
+      color: white;
+      text-align: left;
+      margin: 0;
+      padding: 0;
+      margin-top: -1em;
+      font-weight: bold;
+      vertical-align: top;
+}
+nav img{
+      width: 80px;
+      vertical-align: top;
+      margin: 0;
+      padding: 0;
+}
+#contenido {
+      min-height: 470px;
+      width: 99%;
+}
+.contenidoForm {
+      padding: 0.5em;
+      width: 28%;
+      text-align: right;
+}
+h2 {
+      margin-left: 2em;
+}
+button {
+      margin-top: 1em;
+      margin-left: 13em;
+}
+
+.contenidoForm label{
+      width: 10%;
+      text-align: left;
+}
+.contenidoForm select{
+      width: 48%;
+}
+ul {
+      list-style: none;
+      background-color: rgba(177, 5, 5, 0.637);
+      color: whitesmoke;
+      font-weight: bold;
+      text-align: left;
+      border-radius: 10px;
+}

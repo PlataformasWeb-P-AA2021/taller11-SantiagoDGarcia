@@ -1,0 +1,35 @@
+{% extends "main.html" %}
+
+{% block title %}
+      {{titulo}}
+{% endblock %}
+{% block content %}
+<h2>{{titulo}}</h2>
+<form action="" method="post">
+      {% csrf_token %}
+      {{ form.non_field_errors }}
+      <div class="contenidoForm">
+            {{ form.nombre_propietario.errors }}
+            <label for="{{ form.nombre_propietario.id_for_label }}">Nombre del propietario:</label>
+            {{ form.nombre_propietario }}
+      </div>
+      <div class="contenidoForm">
+            {{ form.costo.errors }}
+            <label for="{{ form.costo.id_for_label }}">Costo del departamento:</label>
+            {{ form.costo }}
+      </div>
+      <div class="contenidoForm">
+            {{ form.cantidad_cuartos.errors }}
+            <label for="{{ form.cantidad_cuartos.id_for_label }}">Cantidad de cuartos:</label>
+            {{ form.cantidad_cuartos }}
+      </div>
+      <div class="contenidoForm">
+            {{ form.edificio.errors }}
+                  {% if valor == false %}
+                        <label for="{{ form.edificio.id_for_label }}">Edificio al que pertenece:</label>
+                  {% endif %}
+            {{ form.edificio }}
+      </div>
+      <button type='submit'>Confirmar</button>
+</form>
+{% endblock %}
